@@ -40,6 +40,12 @@ public class SysUserController {
         return userService.save(sysUser);
     }
 
+    // 返回值不一样
+    @PostMapping("save2")
+    public Mono<Integer> insert(@RequestBody SysUser sysUser){
+        return userService.insert(sysUser);
+    }
+
     @PutMapping("up")
     public Mono<Integer> updateById(@RequestBody SysUser sysUser){
         return userService.updateById(sysUser.getId(),sysUser);
