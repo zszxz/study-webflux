@@ -22,4 +22,14 @@ public class SysUserService  extends GenericReactiveCrudService<SysUser, Long> {
     public Mono<SysUser> findById(Long id){
         return repository.findById(id);
     }
+
+    public Mono<SysUser> findByName(){
+
+        return repository.createQuery().where("nickname","洁哥").fetchOne();
+    }
+
+    public Mono<Integer> updateUser(SysUser sysUser) {
+        return repository.createUpdate().set("nickname",sysUser.getNickname())
+                .set("account",sysUser.getAccount()).where("id",sysUser.getId()).execute();
+    }
 }
