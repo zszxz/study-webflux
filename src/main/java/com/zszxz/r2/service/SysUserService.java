@@ -25,7 +25,7 @@ public class SysUserService  extends GenericReactiveCrudService<SysUser, Long> {
 
     public Mono<SysUser> findByName(){
 
-        return repository.createQuery().where("nickname","洁哥").fetchOne();
+        return repository.createQuery().where(SysUser::getNickname,"洁哥").fetchOne();
     }
 
     public Mono<Integer> updateUser(SysUser sysUser) {
